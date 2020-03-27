@@ -32,6 +32,7 @@ function buildCalendar() {
         //adds text area
         var textarea = $("<textarea>")
         textarea.addClass("col-10")
+        textarea.text("Work, work, work, work, work")
         //adds column2 to container
         var col2 = $("<div>")
         col2.addClass("col-1 saveArea py-4")
