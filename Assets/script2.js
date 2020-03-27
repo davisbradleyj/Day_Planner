@@ -7,9 +7,24 @@ var col1;
 var timeslot;
 var textarea;
 var col2;
-var saveBtn;
+var saveBtn = $("<button>");
 
 $("#currentDay").text(date);
+
+// $(.saveBtn).on("click", function() {
+//    var storeData = $(this).data("id")
+//    console.log(storeData)
+//    var storeNote = $("#"+storeData).text()
+//    console.log(storeNote)
+//
+//
+// }
+// localStorage.setItem(storeData storeNote)
+// localStorage.getItem(storeData)
+//
+//
+//
+
 
 // loop
 var content = $(".container")
@@ -17,7 +32,7 @@ var content = $(".container")
 console.log("is empty")
 // time to build ...some time?
 function buildCalendar() {
-    for (var time = 9; time < 18; time++) {
+    for (var t = 9; t < 18; t++) {
         // adds rows to container
         var row = $("<div>");
         row.addClass("row");
@@ -27,11 +42,12 @@ function buildCalendar() {
         //adds timeslot to col1
         var timeslot = $("<div>")
         timeslot.addClass("time-block")
-        timeslot.text(time + ":00")
+        timeslot.text(t + ":00")
         col1.append(timeslot)
         //adds text area
         var textarea = $("<textarea>")
         textarea.addClass("col-10")
+        textarea.attr("id", t)
         textarea.text("Work, work, work, work, work")
         //adds column2 to container
         var col2 = $("<div>")
@@ -39,17 +55,22 @@ function buildCalendar() {
         //adds button, into col2
         var saveBtn = $("<button>")
         saveBtn.addClass("saveBtn")
+        saveBtn.data("id", t)
         saveBtn.text("Save")
         col2.append(saveBtn)
         // append columns into rows, then rows into container
         row.append(col1, textarea, col2)
         content.append(row);
 
-        if (moment().isBefore(timeslot.text(time + ":00"))) {
+        // set the time "class" - past, present, future
+        // if t > time
+        // future
+        // update ".isBefore" to format
+        if (moment().isBefore(timeslot.text(t + ":00"))) {
         textarea.addClass("future");
-        } else if (moment().isSame(timeslot.text(time + ":00"))) {
+        } else if (moment().isSame(timeslot.text(t + ":00"))) {
         textarea.addClass("present");
-        } else (moment().isAfter(timeslot.text(time + ":00"))) 
+        } else (moment().isAfter(timeslot.text(t + ":00"))) 
         textarea.addClass("past");
         };
     };
