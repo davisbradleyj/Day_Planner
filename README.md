@@ -11,9 +11,13 @@
 
 ## Summary
 
-My first set of commits set a static framework, along with bootstrap and css styling, as a model for how I would proceed to build a more dynamic, jQuery driven.  The below code from my js file basically sets the calendar, calls the styling, and assigns the color to each time block based on the time of day.
+My first set of commits set a static framework, along with bootstrap and css styling, as a model for how I would proceed to build a more dynamic, jQuery driven, calendar with an ability to store some more simple string elements as my daily events.  The below code from my js file basically sets the calendar, calls the styling, and assigns the color to each time block based on the time of day.
 
 Given that I rely on a loop from 9 to 18 to assign some of the ids and data-ids, I had to write a corresponding loop to build the local storage retreival.  That proved a lot more cumbersome and brain wracking to resolve, but it can be found below the calendar setup and styling.
+
+Final product images is direcly below
+
+<img src="https://github.com/davisbradleyj/Day_Planner/blob/master/assets/calendar.png">
 
 ## Code Snippet
 
