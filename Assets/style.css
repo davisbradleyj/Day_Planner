@@ -27,7 +27,6 @@ textarea{
 }
 
 .time-block{
-  text-align: center;
   border-radius: 5px;
 }
 
@@ -40,8 +39,11 @@ textarea{
 
 .hour {
   background-color: #ffffff;
+  text-align: center !important;
+  justify-content: center !important;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding-top: 3 rem !important;
 }
 
 .past {
@@ -83,16 +85,13 @@ textarea{
 .saveArea{
   border: 1px solid black;
   border-top-right-radius: 15px;
+  text-align: center !important;
+  justify-content: center !important;
   border-bottom-right-radius: 15px;
   background-color: teal;
+  padding-top: 3 rem !important;
 }
 
 #currentDay {
   margin-bottom: 0;
 }
-
-/* #leftborder{
-  border-top: 1px black !important;
-  border-right: 1px black !important;
-  border-bottom: 1px black !important;
-} */

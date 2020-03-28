@@ -1,58 +1,39 @@
-
 // setting global variables to traverse any functions
 var time = moment().format("HH");
 var date = moment().format("dddd, MMMM Do YYYY");
 var row;
 var col1;
 var timeslot;
-var textarea;
+var textarea = $("<textarea>")
 var col2;
 var t;
 var saveBtn = $("<button>");
 var storeData;
-var storeNote = $("#" + storeData);
+var storeNote = $("#" + t);
 var copyData;
 
 $("#currentDay").text(date);
 
+// This fuctionality saves the text field into local storage, but had to traverse from a button data-id to the textarea id to do so
 $(document).on("click", ".saveBtn", function (event) {
     event.preventDefault()
-    console.log("clicked")
     storeData = $(this).data("id")
-    console.log(storeData)
     storeNote = $("#" + storeData).val()
-    console.log(storeNote)
     localStorage.setItem(storeData, storeNote)
-    console.log("item stored")
 });
 
+// looped value extraction from local storage, and input into the textareas created byt the buildCalendar loop
 function recallNote() {
-    var copyData = localStorage.getItem(storeData);
-    console.log("item recalled")
-    if (copyData === null) {
-        return;
-    } else {
-        storeNote.val(copyData)
-    }
-}
+    for (t = 9; t < 18; t++) {
+        copyData = localStorage.getItem(t)
+        if (copyData == null) {
+            return;
+        } else {
+            $("#" + t).val(copyData)
+        };
+    };
+};
 
-// 1) finish localStorage action to save data
-// 2) build callText to recall storeData
-// 3) stretch - a refresh action
-// 
-// function callText {
-//      localStorage.getItem
-//      paste into textarea
-//      
-// }
-// callText();
-// localStorage.setItem(storeData storeNote)
-// localStorage.getItem(storeData)
-//
-//
-//
-
-recallNote()
 // loop
 var content = $(".container")
 content.empty()
@@ -91,17 +72,15 @@ function buildCalendar() {
         // set the time "class" - past, present, future       
         if (t < time) {
             textarea.addClass("past");
-
         };
         if (t == time) {
             textarea.addClass("present");
-
         };
         if (t > time) {
             textarea.addClass("future");
-
         };
     };
-}
+};
 
-buildCalendar()
+buildCalendar();
+recallNote();
