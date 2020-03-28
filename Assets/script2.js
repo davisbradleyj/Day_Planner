@@ -7,29 +7,55 @@ var col1;
 var timeslot;
 var textarea;
 var col2;
+var t;
 var saveBtn = $("<button>");
+var storeData;
+var storeNote = $("#" + storeData);
+var copyData;
 
 $("#currentDay").text(date);
 
-// $(.saveBtn).on("click", function() {
-//    var storeData = $(this).data("id")
-//    console.log(storeData)
-//    var storeNote = $("#"+storeData).text()
-//    console.log(storeNote)
-//
-//
+$(document).on("click", ".saveBtn", function (event) {
+    event.preventDefault()
+    console.log("clicked")
+    storeData = $(this).data("id")
+    console.log(storeData)
+    storeNote = $("#" + storeData).val()
+    console.log(storeNote)
+    localStorage.setItem(storeData, storeNote)
+    console.log("item stored")
+});
+
+function recallNote() {
+    var copyData = localStorage.getItem(storeData);
+    console.log("item recalled")
+    if (copyData === null) {
+        return;
+    } else {
+        storeNote.val(copyData)
+    }
+}
+
+// 1) finish localStorage action to save data
+// 2) build callText to recall storeData
+// 3) stretch - a refresh action
+// 
+// function callText {
+//      localStorage.getItem
+//      paste into textarea
+//      
 // }
+// callText();
 // localStorage.setItem(storeData storeNote)
 // localStorage.getItem(storeData)
 //
 //
 //
 
-
+recallNote()
 // loop
 var content = $(".container")
-// content.empty()
-console.log("is empty")
+content.empty()
 // time to build ...some time?
 function buildCalendar() {
     for (var t = 9; t < 18; t++) {
@@ -48,31 +74,34 @@ function buildCalendar() {
         var textarea = $("<textarea>")
         textarea.addClass("col-10")
         textarea.attr("id", t)
-        textarea.text("Work, work, work, work, work")
         //adds column2 to container
         var col2 = $("<div>")
         col2.addClass("col-1 saveArea py-4")
         //adds button, into col2
         var saveBtn = $("<button>")
         saveBtn.addClass("saveBtn")
-        saveBtn.data("id", t)
+        saveBtn.attr("data-id", t)
         saveBtn.text("Save")
         col2.append(saveBtn)
         // append columns into rows, then rows into container
         row.append(col1, textarea, col2)
         content.append(row);
 
-        // set the time "class" - past, present, future
-        // if t > time
-        // future
-        // update ".isBefore" to format
-        if (moment().isBefore(timeslot.text(t + ":00"))) {
-        textarea.addClass("future");
-        } else if (moment().isSame(timeslot.text(t + ":00"))) {
-        textarea.addClass("present");
-        } else (moment().isAfter(timeslot.text(t + ":00"))) 
-        textarea.addClass("past");
+
+        // set the time "class" - past, present, future       
+        if (t < time) {
+            textarea.addClass("past");
+
+        };
+        if (t == time) {
+            textarea.addClass("present");
+
+        };
+        if (t > time) {
+            textarea.addClass("future");
+
         };
     };
+}
 
-buildCalendar();
+buildCalendar()
