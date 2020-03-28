@@ -17,7 +17,7 @@ Given that I rely on a loop from 9 to 18 to assign some of the ids and data-ids,
 
 Final product images is direcly below
 
-<img src="https://github.com/davisbradleyj/Day_Planner/blob/master/assets/calendar.png">
+<img src="https://github.com/davisbradleyj/Day_Planner/blob/master/Assets/calendar.png">
 
 ## Code Snippet
 
