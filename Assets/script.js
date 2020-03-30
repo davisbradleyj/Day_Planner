@@ -26,9 +26,7 @@ $(document).on("click", ".saveBtn", function (event) {
 function recallNote() {
     for (t = 9; t < 18; t++) {
         copyData = localStorage.getItem(t)
-        if (copyData == null) {
-            return;
-        } else {
+        if (copyData) {
             $("#" + t).val(copyData)
         };
     };
@@ -73,7 +71,7 @@ function buildCalendar() {
         if (t < time) {
             textarea.addClass("past");
         };
-        if (t == time) {
+        if (t === time) {
             textarea.addClass("present");
         };
         if (t > time) {
