@@ -71,7 +71,7 @@ function buildCalendar() {
         if (t < time) {
             textarea.addClass("past");
         };
-        if (t === time) {
+        if (t == time) {
             textarea.addClass("present");
         };
         if (t > time) {
